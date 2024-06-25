@@ -7,13 +7,11 @@ const AuthForm = () => {
    const [isLoading, setIsLoading] = useState(false);
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
-
   const authCtx = useContext(AuthContext);
 
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
   };
-
   const submitHandler = (event) => {
     event.preventDefault();
     const enteredEmail = emailInputRef.current.value;
@@ -52,7 +50,7 @@ const AuthForm = () => {
       }
     })
     .then((data)=>{
-      authCtx.login(data.idToken)
+      authCtx.login(data.idToken);
     })
     .catch((err)=>{
       alert(err.message); // Shows an error model
